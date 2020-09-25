@@ -1,5 +1,7 @@
 import store from './store';
 import $ from 'jquery';
+import starFilled from '../images/star.svg';
+import starUnfilled from '../images/star-unfilled.svg';
 
 function generateAddBookmarkSection() {
   return `
@@ -8,7 +10,7 @@ function generateAddBookmarkSection() {
         <h3 class="self-center">Add New Bookmark</h3>
         <label for="add-bookmark-url">Enter Url:</label>
         <input type="text" class="full-width" id="add-bookmark-url" name="url" required>
-        ${store.error ? renderErrorMessage(store.error) : ''}
+        ${store.error ? generateErrorMessage(store.error) : ''}
         <label for="add-bookmark-title">Enter Title:</label>
         <input type="text" class="full-width" id="add-bookmark-title" name="title" required>
         <label for="unrated-container">Choose a Rating: (Optional)</label>
@@ -101,6 +103,18 @@ function generateViewBookmarkSection(bookmarks) {
   return `<section>${generateAddAndFilterButtons() + generateBookmarks(bookmarks)}</section>`;
 }
 
+function generateErrorMessage(error) {
+  store.error = null;
+  return `
+  <div id="error-container">
+    <div id="arrow-div"></div>
+    <div id="error-message">
+      <p>${error}</p>
+    </div>
+  </div>
+  `;
+}
+
 function renderFilterSelectionOptions() {
   if (store.filterListOpen) {
     $('#ratings-choices-container').css('display', 'flex');
@@ -125,20 +139,28 @@ function renderDescriptionEditor() {
   form.find('textarea').val('').val(temp);
 }
 
-function renderErrorMessage(error) {
-  store.error = null;
-  return `
-  <div id="error-container">
-    <div id="arrow-div"></div>
-    <div id="error-message">
-      <p>${error}</p>
-    </div>
-  </div>
-  `;
+function renderFocus(selector) {
+  $(selector)[0].focus();
 }
 
-function focus(selector){
-  $(selector)[0].focus();
+function renderRatingMouseEnterEffect(rating) {
+  for (let index = 1; index <= rating; ++index) {
+    $(`#unrated-button-${index}`).css('background-image', `url(${starFilled})`);
+  }
+}
+
+function renderRatingMouseLeaveEffect() {
+  $('.unrated-buttons').css('background-image', `url(${starUnfilled})`);
+}
+
+function renderRatingClickEffect(rating) {
+  for (let index = 1; index <= rating; ++index) {
+    $(`#unrated-button-${index}`).css('background-image', `url(${starFilled})`);
+  }
+  for (let index = 5; index > rating; --index) {
+    $(`#unrated-button-${index}`).css('background-image', `url(${starUnfilled})`);
+  }
+  $('#rating-input').val(rating);
 }
 
 function render() {
@@ -165,5 +187,8 @@ function render() {
 
 export default {
   render,
-  focus
+  renderFocus,
+  renderRatingMouseEnterEffect,
+  renderRatingMouseLeaveEffect,
+  renderRatingClickEffect
 };

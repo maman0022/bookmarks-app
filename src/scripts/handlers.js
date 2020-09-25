@@ -2,12 +2,11 @@ import $ from 'jquery';
 import render from './render';
 import store from './store';
 import api from './api';
-import starFilled from '../images/star.svg';
-import starUnfilled from '../images/star-unfilled.svg';
 
 $.fn.extend({
-  serializeJson: function () {
+  serializeJson: function (noRating) {
     const formData = new FormData(this[0]);
+    noRating ? formData.delete('rating') : void 0;
     const o = {};
     formData.forEach((val, name) => o[name] = val);
     return JSON.stringify(o);
@@ -54,7 +53,7 @@ function handleFilterBookmarksOpen() {
     render.render();
     //if navigating by tab set focus to first button in list
     if (e.detail === 0) {
-      setTimeout(() => { render.focus('#ratings-choices-container button'); }, 100);
+      setTimeout(() => { render.renderFocus('#ratings-choices-container button'); }, 100);
     }
   });
 }
@@ -87,7 +86,7 @@ function handleExpandBookmark() {
       store.toggleExpanded(id);
       render.render();
       //set focus after render so can continue at same location 
-      setTimeout(() => { render.focus(`[data-id="${id}"]`); }, 100);
+      setTimeout(() => { render.renderFocus(`[data-id="${id}"]`); }, 100);
     }
   });
 }
@@ -121,15 +120,13 @@ function handleUpdateBookmarkDescription() {
 function handleRatingMouseEnterEffect() {
   $('main').on('mouseover', '.unrated-buttons', e => {
     let rating = Number($(e.target).data('rating'));
-    for (let index = 1; index <= rating; ++index) {
-      $(`#unrated-button-${index}`).css('background-image', `url(${starFilled})`);
-    }
+    render.renderRatingMouseEnterEffect(rating);
   });
 }
 
 function handleRatingMouseLeaveEffect() {
   $('main').on('mouseleave', '.unrated-buttons', () => {
-    $('.unrated-buttons').css('background-image', `url(${starUnfilled})`);
+    render.renderRatingMouseLeaveEffect();
   });
 }
 
@@ -138,13 +135,7 @@ function handleRatingClickEffect() {
     e.preventDefault();
     $('main').off('mouseleave mouseover', '.unrated-buttons');
     let rating = Number($(e.target).data('rating'));
-    for (let index = 1; index <= rating; ++index) {
-      $(`#unrated-button-${index}`).css('background-image', `url(${starFilled})`);
-    }
-    for (let index = 5; index > rating; --index) {
-      $(`#unrated-button-${index}`).css('background-image', `url(${starUnfilled})`);
-    }
-    $('#rating-input').val(rating);
+    render.renderRatingClickEffect(rating);
   });
 }
 
@@ -152,8 +143,7 @@ function handleAddBookmarkFormSubmit() {
   $('main').on('submit', '#add-bookmark-form', e => {
     e.preventDefault();
     store.adding = false;
-    $('#rating-input').val() === '' ? $('#rating-input').remove() : void 0;
-    let data = $('form').serializeJson();
+    let data = $('#rating-input').val() === '' ? $(e.target).serializeJson(true) : $(e.target).serializeJson();
     api.addBookmark(data)
       .then(() => {
         render.render();
