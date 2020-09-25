@@ -1,0 +1,283 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #115a57;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+h1, #add-bookmark-form h3 {
+  margin-top: 0;
+}
+
+h1{
+  text-decoration: underline;
+}
+
+a:focus, a:hover {
+  color: crimson;
+}
+
+main {
+  width: 90%;
+  max-width: 600px;
+}
+
+section, ul {
+  width: 100%;
+  padding: 0;
+}
+
+ul li:first-child {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+ul li:last-child {
+  border-bottom: solid 3px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+p {
+  word-break: break-word;
+}
+
+.general-btn {
+  width: 6rem;
+  height: 2.5rem;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background: #d4d0ab;
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+.general-btn:hover, .general-btn:focus {
+  background-color: crimson;
+  color: white;
+}
+
+#visit-button:hover, #visit-button:focus {
+  background-color: #d4d0ab;
+}
+
+.bookmark {
+  border-left: solid 3px;
+  border-right: solid 3px;
+  border-top: solid 3px;
+  padding: 0 5%;
+  background-color: #551700;
+}
+
+.outer-title {
+  height: 2.5rem;
+}
+
+.bookmark-delete {
+  background: url('../images/trash.svg');
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+
+.bookmark-delete:hover, .bookmark-delete:focus {
+  background: url('../images/trash-selected.svg');
+}
+
+#title-input {
+  flex-wrap: nowrap;
+  align-self: flex-start;
+}
+
+.unrated-buttons {
+  border: none;
+  background-image: url('../images/star-unfilled.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 1.25em;
+  width: 1.25em;
+  background-color: unset;
+}
+
+#form-buttons {
+  width: 90%;
+  margin: 0 5%;
+}
+
+.ratings {
+  position: relative;
+  padding: .3em;
+  width: 100%;
+  text-align: end;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-radius: 10px;
+  z-index: 2;
+  font-family: fantasy;
+}
+
+.ratings:hover {
+  background-color: crimson;
+}
+
+.ratings:focus {
+  background-color: crimson;
+}
+
+#accessibility-button {
+  width: 0;
+  height: 0;
+  border: none;
+  background: none;
+}
+
+#ratings-choices-container {
+  width: max-content;
+  flex-direction: column;
+  align-items: flex-end;
+  display: none;
+  background-color: coral;
+  position: absolute;
+  border-radius: 10px;
+}
+
+#rating-select-overlay {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.desc-element:hover, .desc-element:focus {
+  color: crimson;
+}
+
+.update-desc-btn {
+  margin: 1em auto;
+}
+
+.update-desc-form {
+  display: none;
+  margin-top: 1em;
+}
+
+/* Add new bookmark section styles ------------------------------------------------------------------------*/
+
+#add-bookmark-form {
+  background-color: #551700;
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+
+#add-bookmark-form label, #bookmark-input-container {
+  margin-bottom: 0.2rem;
+}
+
+#add-bookmark-form input {
+  margin-bottom: 0.6rem;
+}
+
+#bookmark-textarea {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+#error-container {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.3rem;
+}
+
+#arrow-div {
+  width: 0;
+  height: 0;
+  border-bottom: 0.5em solid gray;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  margin-left: 7.5%;
+}
+
+#error-message {
+  min-height: 1.5em;
+  width: 90%;
+  background-color: gray;
+  border-radius: inherit;
+  margin: auto;
+}
+
+#error-message p {
+  margin: 0;
+  padding: 0.2rem 0.5rem;
+  color: white;
+}
+
+/* common flex properties --------------------------------------------------------------------------*/
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
