@@ -13,16 +13,17 @@ function generateAddBookmarkSection() {
         ${store.error ? generateErrorMessage(store.error) : ''}
         <label for="add-bookmark-title">Enter Title:</label>
         <input type="text" class="full-width" id="add-bookmark-title" name="title" required>
-        <label for="unrated-container">Choose a Rating: (Optional)</label>
+        <label>Choose a Rating: (Optional)</label>
         <div id="unrated-container">
-          <button id="unrated-button-1" class="unrated-buttons" data-rating="1"></button>
-          <button id="unrated-button-2" class="unrated-buttons" data-rating="2"></button>
-          <button id="unrated-button-3" class="unrated-buttons" data-rating="3"></button>
-          <button id="unrated-button-4" class="unrated-buttons" data-rating="4"></button>
-          <button id="unrated-button-5" class="unrated-buttons" data-rating="5"></button>
+          <button id="unrated-button-1" class="unrated-buttons" data-rating="1"><span class="hidden">1 star</span></button>
+          <button id="unrated-button-2" class="unrated-buttons" data-rating="2"><span class="hidden">2 star</span></button>
+          <button id="unrated-button-3" class="unrated-buttons" data-rating="3"><span class="hidden">3 star</span></button>
+          <button id="unrated-button-4" class="unrated-buttons" data-rating="4"><span class="hidden">4 star</span></button>
+          <button id="unrated-button-5" class="unrated-buttons" data-rating="5"><span class="hidden">5 star</span></button>
           <input type="hidden" name="rating" id="rating-input">
         </div>
-        <textarea name="desc" id="bookmark-textarea" rows="5" placeholder="Add a description (Optional)"></textarea>
+        <label for="bookmark-textarea">Add a description: (Optional)</label>
+        <textarea name="desc" id="bookmark-textarea" rows="5"></textarea>
         <div class="flex-row justify-around" id="form-buttons">
           <input type="reset" class="general-btn" value="Cancel" id="cancel-add-bookmark">
           <input type="submit" class="general-btn" value="Create">
@@ -50,17 +51,18 @@ function generateBookmarks(bookmarks = store.bookmarks) {
       <li class="bookmark flex-column align-center justify-start">
           <div class="flex-row justify-between align-center full-width bookmark-id" tabindex="0" data-id=${bookmark.id}>
             <h3 class="bookmark-title">${bookmark.title}</h3>
-            <button class="bookmark-delete"></button>
+            <button class="bookmark-delete"><span class="hidden">delete bookmark</span></button>
           </div>
           <div class="flex-column align-center full-width">
             <div class="flex-row justify-evenly full-width">
-              <button class="general-btn" id="visit-button" tabindex="-1"><a href="${bookmark.url}" target="_blank">Visit Site</a></button>
+              <a href="${bookmark.url}" target="_blank">Visit Site</a>
             ${bookmark.rating ? '<div class="flex-row align-center">' + generateRatingStars(bookmark.rating) + '</div>' : ''}
             </div>
               <p class="flex-row justify-center full-width desc-element" tabindex="0">${bookmark.desc ? bookmark.desc : ''}</p>
               <form class="align-center full-width update-desc-form">
-                <textarea class="full-width" name="desc" rows="5">${bookmark.desc ? bookmark.desc : ''}</textarea>
-                <input type="submit" class="general-btn update-desc-btn" id="" value="Update">
+                <label for="edit-bk-desc-${bookmark.id}">Edit Bookmark Description:</label>
+                <textarea class="full-width" name="desc" id="edit-bk-desc-${bookmark.id}" rows="5">${bookmark.desc ? bookmark.desc : ''}</textarea>
+                <input type="submit" class="general-btn update-desc-btn" value="Update">
               </form>
           </div>
         </li>

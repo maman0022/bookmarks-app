@@ -5,7 +5,7 @@
 body {
   min-height: 100vh;
   background-color: #115a57;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: white;
 }
 
@@ -29,15 +29,16 @@ main {
 section, ul {
   width: 100%;
   padding: 0;
+  color: black;
 }
 
 ul li:first-child {
+  border-top: none;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 ul li:last-child {
-  border-bottom: solid 3px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -45,6 +46,14 @@ ul li:last-child {
 p {
   word-break: break-word;
   min-height: 1rem;
+}
+
+a:link{
+  color: rgb(65, 0, 0);
+}
+
+.hidden{
+  display: none;
 }
 
 .general-btn {
@@ -68,11 +77,9 @@ p {
 }
 
 .bookmark {
-  border-left: solid 3px;
-  border-right: solid 3px;
-  border-top: solid 3px;
+  border-top: solid 2px white;
   padding: 0 5%;
-  background-color: #551700;
+  background-color: cadetblue;
 }
 
 .outer-title {
@@ -173,7 +180,7 @@ p {
 /* Add new bookmark section styles ------------------------------------------------------------------------*/
 
 #add-bookmark-form {
-  background-color: #551700;
+  background-color: cadetblue;
   padding: 1.2rem;
   border-radius: 10px;
 }
@@ -182,13 +189,17 @@ p {
   margin-bottom: 0.2rem;
 }
 
+label[for=bookmark-textarea]{
+  margin-top: 0.6rem;
+}
+
 #add-bookmark-form input {
   margin-bottom: 0.6rem;
 }
 
 #bookmark-textarea {
   width: 100%;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
 }
 
 #error-container {
