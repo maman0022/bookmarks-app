@@ -13,12 +13,16 @@ h1, #add-bookmark-form h3 {
   margin-top: 0;
 }
 
-h1{
+h1 {
   text-decoration: underline;
 }
 
 a:focus, a:hover {
   color: crimson;
+}
+
+a:link {
+  color: rgb(65, 0, 0);
 }
 
 main {
@@ -48,11 +52,7 @@ p {
   min-height: 1rem;
 }
 
-a:link{
-  color: rgb(65, 0, 0);
-}
-
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -189,7 +189,7 @@ a:link{
   margin-bottom: 0.2rem;
 }
 
-label[for=bookmark-textarea]{
+label[for=bookmark-textarea] {
   margin-top: 0.6rem;
 }
 
@@ -228,7 +228,7 @@ label[for=bookmark-textarea]{
 #error-message p {
   margin: 0;
   padding: 0.2rem 0.5rem;
-  color: white;
+  color: black;
 }
 
 /* common flex properties --------------------------------------------------------------------------*/
