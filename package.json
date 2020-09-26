@@ -1,7 +1,7 @@
 {
-  "name": "shopping-list-starter",
+  "name": "Bookmarks App",
   "version": "1.0.0",
-  "description": "Created for the Thinkful EI Program.",
+  "description": "Save website bookmarks and rate them.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
