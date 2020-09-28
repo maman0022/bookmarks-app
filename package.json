@@ -1,5 +1,5 @@
 {
-  "name": "Bookmarks App",
+  "name": "bookmarks-app",
   "version": "1.0.0",
   "description": "Save website bookmarks and rate them.",
   "main": "index.js",
@@ -21,6 +21,6 @@
   },
   "dependencies": {
     "jquery": "^3.4.1",
-    "normalize.css": "^8.0.1",
+    "normalize.css": "^8.0.1"
   }
 }
