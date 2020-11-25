@@ -1,7 +1,6 @@
 ## Bookmarks App
 
-Live Link:\
-https://thinkful-ei-shark.github.io/Muhammad-bookmarks-app/
+Live Link: https://maman0022.github.io/bookmarks-app/  
 
 The user can add a bookmark with title,url,description, and ratings attributes.\
 The user sees a condensed view of their bookmarks when they start the app.\
