@@ -2,14 +2,11 @@
 
 Live Link: https://maman0022.github.io/bookmarks-app/  
 ## Summary  
-This is a jQuery based single page app that allows users keep a collection of their favorite websites.  
-  
+This is a jQuery based single page app that allows users to keep a collection of their favorite websites.  
 ## Features  
-- add a bookmark with title,url,description, and ratings attributes  
-- 
-The user can add a bookmark with title,url,description, and ratings attributes.\
-The user sees a condensed view of their bookmarks when they start the app.\
-When a user clicks on a bookmark, the bookmark expands to show description and a delete button.\
-The user can filter their bookmarks based on rating.\
-In the detailed view, the user can click the description to update it.\
-The user can navigate the entire app using the keyboard.
+- add a bookmark with title, url, description, and ratings attributes  
+- a condensed view of the bookmarks when the app is started  
+- clicking on a bookmark expands it to show the description and a delete button  
+- filter bookmarks based on their rating  
+- clicking on the description allows it to be edited  
+- entire app is navigable through the keyboard
